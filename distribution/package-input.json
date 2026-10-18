@@ -1,7 +1,7 @@
 {
-  "recipe_sha256": "916676e375f6cc137d33aae02d4ee391353fb926c5db3cfc990ad5fc11799206",
-  "pin_updater_sha256": "1c37c7fc03892e3aee51c6e24e3a786a6dbdbe9c840aa1a21380c4ade93eed1d",
-  "pin_setup_sha256": "d9f9cdcd66bb0686e9881749d6c9461be3bc9d0c9b4e98cbba010bd8503a5956",
+  "recipe_sha256": "23faf6166bc8269b17842342015b283e0a97a22da36da983e208520657801367",
+  "pin_updater_sha256": "9a6c141c5c2b99b0c9db5edece60606871c27da876e5b63cf354d0d852d5f31b",
+  "pin_setup_sha256": "b20d33c2a693c23c8069b90a7c69b31b9a4d8ffdc3b575d2d84f19390c44b13f",
   "outer_entries": [
     {
       "filename": "PinLocalSetup.exe",
@@ -10,8 +10,8 @@
         10,
         18,
         15,
-        15,
-        58
+        52,
+        0
       ],
       "create_system": 0,
       "create_version": 20,
@@ -26,8 +26,8 @@
         10,
         18,
         15,
-        20,
-        46
+        52,
+        4
       ],
       "create_system": 0,
       "create_version": 20,
@@ -36,14 +36,14 @@
       "external_attr": 2176188416
     },
     {
-      "filename": "PinLocal-0.2.1-Windows.zip",
+      "filename": "PinLocal-0.2.2-Windows.zip",
       "date_time": [
         2026,
         10,
         18,
         15,
-        20,
-        46
+        52,
+        4
       ],
       "create_system": 0,
       "create_version": 20,

@@ -4,7 +4,7 @@ Windows x64용 Premiere Pro 26 플러그인입니다. 두 제품은 각각 설�
 
 | 제품 | 기능 | 설치 파일 |
 |---|---|---|
-| Pin Local 0.2.1 | 모션 추적 · 피사체 고정 · 컷별 효과와 키프레임 저장 | [Pin 설치](https://github.com/contentriumkorea/local-studio-plugins/releases/download/pin-v0.2.1/PinLocal-0.2.1-Setup.zip) |
+| Pin Local 0.2.2 | 모션 추적 · 피사체 고정 · 컷별 효과와 키프레임 저장 | [Pin 설치](https://github.com/contentriumkorea/local-studio-plugins/releases/download/pin-v0.2.2/PinLocal-0.2.2-Setup.zip) |
 | Skin Blur 0.2.1 | 얼굴 검출 · 피부 스무딩 · 잡티/밝기/톤 · 얼굴형 보정 | [Skin Blur 설치](https://github.com/contentriumkorea/local-studio-plugins/releases/download/skin-blur-v0.2.1/SkinBlur-0.2.1-Setup.zip) |
 
 ## 설치
@@ -64,3 +64,7 @@ Skin Blur는 기존 Glam Local의 이름을 변경한 제품입니다. 기존 �
 영상은 이 PC에서만 처리합니다. 설치 위치는 Program Files/LocalStudio/PinLocal 및 기존 호환 경로 Program Files/LocalStudio/GlamLocal입니다. 사용자 데이터는 LocalAppData/LocalStudio 아래에 저장됩니다.
 
 이 저장소는 설치 파일과 서명된 업데이트 배포용입니다. 제3자 구성요소의 라이선스는 패키지 안의 THIRD_PARTY_NOTICES.md와 각 런타임 라이선스를 확인하세요.
+
+### Pin 0.2.2 이어 추적
+
+원본 모든 프레임을 분석하고 시퀀스 시간에 맞춰 키를 출력합니다. 중단 지점 보기 → 가림 뒤 프레임으로 이동 → 같은 핀 재지정 → 이어 추적을 사용하세요. 빠진 중간 구간은 수동 연결로 표시합니다. 전체 프레임이 연결돼도 수동 구간은 재생 확인 후 적용하세요. 최초 검증 구간은 186프레임 중 추적 181·수동 연결 5프레임으로 끝까지 연결했습니다. 핀 재지정은 사람이 선택하는 단계이며 완전 자동 가림 복구 기능은 아닙니다.

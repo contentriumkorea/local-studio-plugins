@@ -66,6 +66,7 @@ def main():
     assert sha(recipe_bytes)==metadata['recipe_sha256']
     recipe=json.loads(zlib.decompress(recipe_bytes))
     skin=manifest('skin-blur.json');pin=manifest('pin.json');legacy=manifest('glam.json')
+    version=pin['version']
     source=download(recipe['source_url']);assert sha(source)==recipe['source_sha256']
     verify_package(source,skin)
     target=bytearray()
@@ -76,7 +77,7 @@ def main():
     with zipfile.ZipFile(io.BytesIO(target)) as payload:
         updater=payload.read('PinUpdater.exe')
     assert sha(updater)==metadata['pin_updater_sha256']
-    files={'PinLocalSetup.exe':updater,'PinLocal-update.json':(ROOT.parent/'updates/pin.json').read_bytes(),'PinLocal-0.2.1-Windows.zip':target}
+    files={'PinLocalSetup.exe':updater,'PinLocal-update.json':(ROOT.parent/'updates/pin.json').read_bytes(),'PinLocal-'+version+'-Windows.zip':target}
     outer=io.BytesIO()
     with zipfile.ZipFile(outer,'w',zipfile.ZIP_STORED) as setup:
         for entry in metadata['outer_entries']:
@@ -84,13 +85,12 @@ def main():
             for field in ('create_system','create_version','extract_version','internal_attr','external_attr'):setattr(info,field,entry[field])
             setup.writestr(info,files[entry['filename']])
     setup_bytes=outer.getvalue();assert sha(setup_bytes)==metadata['pin_setup_sha256'],'Setup reconstruction differs'
-    release=ensure_release('pin-v0.2.1','Pin Local 0.2.1',
-        '## 설치\nPinLocal-0.2.1-Setup.zip을 풀고 PinLocalSetup.exe를 실행하세요. Adobe 앱 종료 후 설치와 Windows 관리자 승인을 진행합니다.\n\n'
-        '- Skin Blur와 별도 설치·업데이트\n- 컷마다 Pin Local 효과와 키프레임을 프로젝트에 저장\n- 다른 컷 작업 및 프로젝트 재열기 후 적용 결과 유지\n- Premiere 음수 행 간격 렌더 오류 수정\n- 현재 컷·미리보기 중심 화면과 항상 보이는 추적/적용 버튼\n\n'
-        'Premiere Pro 26.5.2에서 실제 60프레임 추적·적용·다른 컷 유지·프로젝트 재열기·PNG 렌더를 확인했습니다. Windows x64 · CPU · SDR 8비트. 일반 설치는 Setup.zip 하나를 받으세요.')
-    upload(release,'PinLocal-0.2.1-Windows.zip',target)
+    release=ensure_release('pin-v'+version,'Pin Local '+version,
+        '## 설치\nPinLocal-'+version+'-Setup.zip을 풀고 PinLocalSetup.exe를 실행하세요. Adobe 앱 종료 후 설치와 Windows 관리자 승인을 진행합니다.\n\n'+pin['notes']+
+        '\n## 가림 뒤 이어 추적\n중단 지점 보기 → 얼굴이 다시 보이는 프레임으로 이동 → 원래 핀과 같은 위치를 같은 순서로 재지정 → 이어 추적 → 적용. 누락 구간은 수동 연결로 표시하며 재생 확인이 필요합니다. 자동으로 전부 추적한 결과와 구분됩니다.\n\nWindows x64 · CPU · SDR 8비트. 일반 설치는 Setup.zip 하나를 받으세요.')
+    upload(release,'PinLocal-'+version+'-Windows.zip',target)
     upload(release,'PinLocal-update.json',files['PinLocal-update.json'])
-    upload(release,'PinLocal-0.2.1-Setup.zip',setup_bytes)
+    upload(release,'PinLocal-'+version+'-Setup.zip',setup_bytes)
     migration=ensure_release('glam-v0.2.1','Skin Blur 0.2.1 · 기존 업데이트 호환',
         '이 릴리스는 기존 Glam Local 0.2.0 업데이트 앱이 Skin Blur 0.2.1로 전환할 때 사용하는 호환 파일입니다.\n\n'
         '[새 설치는 Skin Blur 릴리스](https://github.com/'+REPO+'/releases/tag/skin-blur-v0.2.1)를 이용하세요. 기존 앱이 파일명을 검증하므로 이 호환 파일만 이전 이름을 유지합니다. 실제 설치되는 제품은 Skin Blur입니다.')
