@@ -8,8 +8,8 @@ Premiere Pro에서 움직임을 따라가는 글자·이미지와 얼굴·피부
 
 ## 다운로드 · 설치
 
-- **[TrackPin 경량 설치프로그램](https://github.com/contentriumkorea/local-studio-plugins/releases/download/pin-v0.2.5/PinLocalSetup.exe)** — 실행할 때 최신 정식 버전을 내려받습니다.
-- [TrackPin 0.2.5 오프라인 설치](https://github.com/contentriumkorea/local-studio-plugins/releases/download/pin-v0.2.5/PinLocal-0.2.5-Setup.zip)
+- **[TrackPin 경량 설치프로그램](https://github.com/contentriumkorea/local-studio-plugins/releases/download/pin-v0.2.6/PinLocalSetup.exe)** — 실행할 때 최신 정식 버전을 내려받습니다.
+- [TrackPin 0.2.6 오프라인 설치](https://github.com/contentriumkorea/local-studio-plugins/releases/download/pin-v0.2.6/PinLocal-0.2.6-Setup.zip)
 - [SkinVeil 0.2.2 설치](https://github.com/contentriumkorea/local-studio-plugins/releases/download/skin-blur-v0.2.2/SkinBlur-0.2.2-Setup.zip)
 
 설치프로그램 실행 → 다운로드·파일 검증 → Adobe 작업 저장 및 앱 종료 → 설치·Windows 관리자 승인 → Premiere 재실행 → **창 → 확장 프로그램**에서 제품을 엽니다.
@@ -24,7 +24,11 @@ Premiere Pro에서 움직임을 따라가는 글자·이미지와 얼굴·피부
 4. 추적·주변 영역 복구·가림 추정·미해결 프레임을 확인한 뒤 적용합니다. **복구·추정 구간 보기**로 확인할 구간으로 이동할 수 있습니다.
 5. 결과는 각 컷의 TrackPin 효과와 키프레임으로 저장됩니다. 다른 컷을 작업해도 유지됩니다.
 
-### 0.2.5 변경 사항
+### 0.2.6 이름 변경
+
+효과 패널과 확장 패널의 표시 이름을 TrackPin으로 바꿨습니다. 기존 프로젝트의 효과 식별자와 키프레임은 유지됩니다.
+
+### 0.2.5 추적 개선
 
 고개를 돌려 작은 핀의 무늬가 사라지면 주변 영역의 움직임으로 복구합니다. 이 결과는 정확한 표면 점의 재관측과 구분해 **주변 영역 복구**로 표시하며, 적용 전에 재생 확인이 필요합니다. 다른 물체로 갑자기 옮겨가거나 외형 연속성을 확인할 수 없는 프레임은 관측 결과로 사용하지 않습니다.
 
