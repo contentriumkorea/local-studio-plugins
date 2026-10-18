@@ -1,0 +1,23 @@
+name: Publish signed Pin and Skin Blur packages
+on:
+  push:
+    branches: [main]
+    paths: [distribution/**, .github/workflows/publish.yml]
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: publish-signed-distributions
+  cancel-in-progress: false
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Reconstruct and publish verified signed packages
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python3 distribution/publish.py
