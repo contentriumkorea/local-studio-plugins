@@ -86,11 +86,12 @@ def main():
             setup.writestr(info,files[entry['filename']])
     setup_bytes=outer.getvalue();assert sha(setup_bytes)==metadata['pin_setup_sha256'],'Setup reconstruction differs'
     release=ensure_release('pin-v'+version,'Pin Local '+version,
-        '## 설치\nPinLocal-'+version+'-Setup.zip을 풀고 PinLocalSetup.exe를 실행하세요. Adobe 앱 종료 후 설치와 Windows 관리자 승인을 진행합니다.\n\n'+pin['notes']+
-        '\n## 가림 뒤 이어 추적\n중단 지점 보기 → 얼굴이 다시 보이는 프레임으로 이동 → 원래 핀과 같은 위치를 같은 순서로 재지정 → 이어 추적 → 적용. 누락 구간은 수동 연결로 표시하며 재생 확인이 필요합니다. 자동으로 전부 추적한 결과와 구분됩니다.\n\nWindows x64 · CPU · SDR 8비트. 일반 설치는 Setup.zip 하나를 받으세요.')
+        '## 설치\n[경량 설치프로그램](https://github.com/'+REPO+'/releases/download/pin-v'+version+'/PinLocalSetup.exe)을 실행하면 최신 정식 버전을 내려받습니다. Adobe 앱 작업을 저장하고 종료한 뒤 설치와 Windows 관리자 승인을 진행하세요. 오프라인 설치는 Setup.zip을 사용하세요.\n\n'+pin['notes']+
+        '\n## 사용\n원본 컷 불러오기 → 대상 글자·이미지 선택 또는 피사체 고정 → 핀 지정 → 추적 시작 → 결과 확인 → 적용. 가려져도 남은 프레임에서 같은 피사체를 다시 찾습니다. 가림 사이의 추정 구간과 미해결 구간은 별도로 표시합니다.\n\n## 검증 범위\n로컬 엔진과 설치 패키지를 검증했습니다. Premiere 실사용 검증은 사용자가 진행합니다. Windows x64 · Premiere Pro 26 · SDR 8비트.')
     upload(release,'PinLocal-'+version+'-Windows.zip',target)
     upload(release,'PinLocal-update.json',files['PinLocal-update.json'])
     upload(release,'PinLocal-'+version+'-Setup.zip',setup_bytes)
+    upload(release,'PinLocalSetup.exe',updater)
     migration=ensure_release('glam-v0.2.1','Skin Blur 0.2.1 · 기존 업데이트 호환',
         '이 릴리스는 기존 Glam Local 0.2.0 업데이트 앱이 Skin Blur 0.2.1로 전환할 때 사용하는 호환 파일입니다.\n\n'
         '[새 설치는 Skin Blur 릴리스](https://github.com/'+REPO+'/releases/tag/skin-blur-v0.2.1)를 이용하세요. 기존 앱이 파일명을 검증하므로 이 호환 파일만 이전 이름을 유지합니다. 실제 설치되는 제품은 Skin Blur입니다.')
@@ -100,7 +101,9 @@ def main():
     for info in (pin,skin,legacy):
         data=download(info['url']);verify_package(data,info)
         print('PUBLIC_DOWNLOAD_VERIFIED',info['product'],info['version'],info['sha256'],flush=True)
-    result={'status':'complete','pin':pin['url'],'skin_blur':skin['url'],'legacy':legacy['url'],'signed_feeds_verified':3,'public_downloads_verified':3,'private_key_uploaded':False}
+    installer_url='https://github.com/'+REPO+'/releases/download/pin-v'+version+'/PinLocalSetup.exe'
+    assert sha(download(installer_url))==sha(updater),'Public installer download differs'
+    result={'status':'complete','pin_version':version,'pin':pin['url'],'installer':installer_url,'installer_sha256':sha(updater),'skin_blur':skin['url'],'legacy':legacy['url'],'signed_feeds_verified':3,'public_downloads_verified':4,'private_key_uploaded':False}
     path='distribution/verification.json'
     try:old=api('/contents/'+path)
     except urllib.error.HTTPError as error:
