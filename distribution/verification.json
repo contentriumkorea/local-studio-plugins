@@ -1,0 +1,9 @@
+{
+  "status": "complete",
+  "pin": "https://github.com/contentriumkorea/local-studio-plugins/releases/download/pin-v0.2.1/PinLocal-0.2.1-Windows.zip",
+  "skin_blur": "https://github.com/contentriumkorea/local-studio-plugins/releases/download/skin-blur-v0.2.1/SkinBlur-0.2.1-Windows.zip",
+  "legacy": "https://github.com/contentriumkorea/local-studio-plugins/releases/download/glam-v0.2.1/GlamLocal-0.2.1-Windows.zip",
+  "signed_feeds_verified": 3,
+  "public_downloads_verified": 3,
+  "private_key_uploaded": false
+}
