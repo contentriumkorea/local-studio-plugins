@@ -1,17 +1,18 @@
 {
-  "recipe_sha256": "ed493744382ec3102ac2fdc44636781c60b88783b515b6dfc75a81e595d10840",
-  "pin_updater_sha256": "9a1eeb0a780e42dd21ace89ddd5c2878bbcf99362a3ae0a2bcdbb385cf4e13cb",
-  "pin_setup_sha256": "1d23b7f269e222ce4c2183970cf783bdddabeefa20b63a0be3fb8eb1fabc313b",
+  "product": "glam",
+  "recipe_sha256": "5a5f90d2bb3194fbae4a2816e0c6c6cb6678c9d5e2d12d95b4161760119efcb7",
+  "updater_sha256": "2d05e57bbe7fb9e41011ae4c824c59d56270621d57d1441950f440011439d373",
+  "setup_sha256": "a4eed9505bb3c968639436ccfc46b6240b273acea1c22ed238dc02d20b6702f8",
   "outer_entries": [
     {
-      "filename": "PinLocalSetup.exe",
+      "filename": "SkinBlurSetup.exe",
       "date_time": [
         2026,
         10,
-        18,
-        18,
-        55,
-        46
+        23,
+        17,
+        5,
+        2
       ],
       "create_system": 0,
       "create_version": 20,
@@ -20,14 +21,14 @@
       "external_attr": 2180972544
     },
     {
-      "filename": "PinLocal-update.json",
+      "filename": "SkinBlur-update.json",
       "date_time": [
         2026,
         10,
-        18,
-        18,
-        59,
-        52
+        23,
+        17,
+        9,
+        6
       ],
       "create_system": 0,
       "create_version": 20,
@@ -36,14 +37,14 @@
       "external_attr": 2176188416
     },
     {
-      "filename": "PinLocal-0.2.5-Windows.zip",
+      "filename": "SkinBlur-0.2.3-Windows.zip",
       "date_time": [
         2026,
         10,
-        18,
-        18,
-        59,
-        52
+        23,
+        17,
+        9,
+        6
       ],
       "create_system": 0,
       "create_version": 20,

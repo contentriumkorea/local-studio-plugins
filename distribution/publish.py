@@ -68,12 +68,12 @@ def main():
     skin=manifest('skin-blur.json');pin=manifest('pin.json');legacy=manifest('glam.json')
     version=pin['version']
     source=download(recipe['source_url']);assert sha(source)==recipe['source_sha256']
-    verify_package(source,skin)
+    if recipe['source_url']==skin['url']:verify_package(source,skin)
     target=bytearray()
     for segment in recipe['segments']:
         target.extend(base64.b64decode(segment['literal']) if 'literal' in segment else source[segment['offset']:segment['offset']+segment['length']])
     target=bytes(target);assert sha(target)==recipe['target_sha256']
-    verify_package(target,pin);verify_package(source,legacy)
+    verify_package(target,pin)
     with zipfile.ZipFile(io.BytesIO(target)) as payload:
         updater=payload.read('PinUpdater.exe')
     assert sha(updater)==metadata['pin_updater_sha256']
@@ -92,11 +92,12 @@ def main():
     upload(release,'PinLocal-update.json',files['PinLocal-update.json'])
     upload(release,'PinLocal-'+version+'-Setup.zip',setup_bytes)
     upload(release,'PinLocalSetup.exe',updater)
-    migration=ensure_release('glam-v0.2.1','Skin Blur 0.2.1 · 기존 업데이트 호환',
-        '이 릴리스는 기존 Glam Local 0.2.0 업데이트 앱이 Skin Blur 0.2.1로 전환할 때 사용하는 호환 파일입니다.\n\n'
-        '[새 설치는 Skin Blur 릴리스](https://github.com/'+REPO+'/releases/tag/skin-blur-v0.2.1)를 이용하세요. 기존 앱이 파일명을 검증하므로 이 호환 파일만 이전 이름을 유지합니다. 실제 설치되는 제품은 Skin Blur입니다.')
-    upload(migration,'GlamLocal-0.2.1-Windows.zip',source)
-    upload(migration,'GlamLocal-update.json',(ROOT.parent/'updates/glam.json').read_bytes())
+    if legacy['version']=='0.2.1':
+        migration=ensure_release('glam-v0.2.1','Skin Blur 0.2.1 · 기존 업데이트 호환',
+            '이 릴리스는 기존 Glam Local 0.2.0 업데이트 앱이 Skin Blur 0.2.1로 전환할 때 사용하는 호환 파일입니다.\n\n'
+            '[새 설치는 Skin Blur 릴리스](https://github.com/'+REPO+'/releases/tag/skin-blur-v0.2.1)를 이용하세요. 기존 앱이 파일명을 검증하므로 이 호환 파일만 이전 이름을 유지합니다. 실제 설치되는 제품은 Skin Blur입니다.')
+        upload(migration,'GlamLocal-0.2.1-Windows.zip',source)
+        upload(migration,'GlamLocal-update.json',(ROOT.parent/'updates/glam.json').read_bytes())
     # Read back each published URL and verify the independently signed hash.
     for info in (pin,skin,legacy):
         data=download(info['url']);verify_package(data,info)
@@ -114,4 +115,9 @@ def main():
     api('/contents/'+path,body,'PUT')
     print('PUBLICATION_COMPLETE',flush=True)
 
-if __name__=='__main__':main()
+if __name__=='__main__':
+    active=json.loads((ROOT/'package-input.json').read_text())
+    if active.get('product')=='glam':
+        from publish_skin import publish_skin
+        publish_skin(active)
+    else:main()
