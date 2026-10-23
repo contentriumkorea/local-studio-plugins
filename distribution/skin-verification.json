@@ -1,0 +1,12 @@
+{
+  "status": "complete",
+  "skin_version": "0.2.3",
+  "release": "https://github.com/contentriumkorea/local-studio-plugins/releases/tag/skin-blur-v0.2.3",
+  "installer": "https://github.com/contentriumkorea/local-studio-plugins/releases/download/skin-blur-v0.2.3/SkinBlurSetup.exe",
+  "payload_sha256": "78d17e437285b6ccb6bbc356f5d195ecda41eebc536b39be4ecc91250637f5c4",
+  "installer_sha256": "2d05e57bbe7fb9e41011ae4c824c59d56270621d57d1441950f440011439d373",
+  "signed_feeds_verified": 2,
+  "public_downloads_verified": 4,
+  "pin_feed_changed": false,
+  "private_key_uploaded": false
+}
