@@ -6,8 +6,8 @@ Premiere Pro에서 움직임을 따라가는 글자·이미지와 얼굴·피부
 
 - **[Pin Local 경량 설치프로그램](https://github.com/contentriumkorea/local-studio-plugins/releases/download/pin-v0.2.5/PinLocalSetup.exe)** — 실행할 때 최신 정식 버전을 내려받습니다.
 - [Pin Local 0.2.5 오프라인 설치](https://github.com/contentriumkorea/local-studio-plugins/releases/download/pin-v0.2.5/PinLocal-0.2.5-Setup.zip)
-- **[SkinVeil (Skin Blur) 설치프로그램](https://github.com/contentriumkorea/local-studio-plugins/releases/download/skin-blur-v0.2.3/SkinBlurSetup.exe)**
-- [SkinVeil 0.2.3 오프라인 설치](https://github.com/contentriumkorea/local-studio-plugins/releases/download/skin-blur-v0.2.3/SkinBlur-0.2.3-Setup.zip)
+- **[SkinVeil (Skin Blur) 설치프로그램](https://github.com/contentriumkorea/local-studio-plugins/releases/download/skin-blur-v0.3.0/SkinBlurSetup.exe)**
+- [SkinVeil 0.3.0 오프라인 설치](https://github.com/contentriumkorea/local-studio-plugins/releases/download/skin-blur-v0.3.0/SkinBlur-0.3.0-Setup.zip)
 
 설치프로그램 실행 → 다운로드·파일 검증 → Adobe 작업 저장 및 앱 종료 → 설치·Windows 관리자 승인 → Premiere 재실행 → **창 → 확장 프로그램**에서 제품을 엽니다.
 
@@ -33,7 +33,7 @@ Premiere Pro에서 움직임을 따라가는 글자·이미지와 얼굴·피부
 
 클립 선택 → **선택 클립에 SkinVeil 추가** → 효과 컨트롤에서 피부결·잡티·밝기·톤·얼굴형 등을 조절합니다. 기본 0은 원본입니다. 최대 4명에게 같은 값이 적용됩니다. 얼굴 미검출 프레임은 원본을 유지합니다.
 
-0.2.3은 큰 얼굴 한 명에게만 보정되고 옆의 작은 얼굴이 누락되던 문제를 수정했습니다. 서로 크기가 다른 2·3·4명의 얼굴 검출과 각 얼굴의 피부 블러·밝기 보정을 로컬 엔진 및 배포 DLL→worker에서 확인했습니다. 최대 4명에게 같은 값이 적용되며 작은 얼굴·옆얼굴·가림에서는 검출이 제한될 수 있습니다.
+0.3.0은 영상 보정 처리 엔진을 교체하고 피부 영역 계산·영상 변환·필터의 반복 작업을 줄였습니다. 효과 적용에 외부 보정 프로세스를 실행하지 않습니다. 서로 크기가 다른 2·3·4명의 얼굴 검출과 각 얼굴의 블러·밝기 보정, 기존 설정·0값 원본·배경·알파 보존을 실제 배포 DLL에서 로컬 검증했습니다. 작은 얼굴·옆얼굴·가림에서는 검출이 제한될 수 있으며, 처리 속도는 해상도·장면에 따라 다릅니다. Premiere 실사용 확인은 사용자가 진행합니다.
 
 현재 표시명은 SkinVeil입니다. 기존 Skin Blur·Glam Local 프로젝트의 효과와 설정, 설치 위치와 업데이트는 호환됩니다.
 
@@ -51,3 +51,4 @@ Windows x64 · Premiere Pro 26 · SDR 8비트. Pin은 속도 100%, 정방 픽셀
 
 
 [![콘텐츠리움 홈페이지](https://img.shields.io/badge/콘텐츠리움-홈페이지-222222)](https://contentrium.com/)
+

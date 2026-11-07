@@ -1,18 +1,18 @@
 {
   "product": "glam",
-  "recipe_sha256": "5a5f90d2bb3194fbae4a2816e0c6c6cb6678c9d5e2d12d95b4161760119efcb7",
-  "updater_sha256": "2d05e57bbe7fb9e41011ae4c824c59d56270621d57d1441950f440011439d373",
-  "setup_sha256": "a4eed9505bb3c968639436ccfc46b6240b273acea1c22ed238dc02d20b6702f8",
+  "recipe_sha256": "29aea3ebe0506e9c52f875c3b21e64813adb3e0bd630e78fa269f92263d0f347",
+  "updater_sha256": "8e34f59c331a66761b1a844e6d4f42ab16743fd0af9c208edde642913f9c7c04",
+  "setup_sha256": "8a2f0f25e279cd642d503436c580b08f173906e6c1eeaa5e7fb3adf711aa6bf9",
   "outer_entries": [
     {
       "filename": "SkinBlurSetup.exe",
       "date_time": [
         2026,
-        10,
-        23,
-        17,
+        11,
         5,
-        2
+        14,
+        10,
+        22
       ],
       "create_system": 0,
       "create_version": 20,
@@ -24,11 +24,11 @@
       "filename": "SkinBlur-update.json",
       "date_time": [
         2026,
-        10,
-        23,
-        17,
-        9,
-        6
+        11,
+        5,
+        14,
+        11,
+        50
       ],
       "create_system": 0,
       "create_version": 20,
@@ -37,14 +37,14 @@
       "external_attr": 2176188416
     },
     {
-      "filename": "SkinBlur-0.2.3-Windows.zip",
+      "filename": "SkinBlur-0.3.0-Windows.zip",
       "date_time": [
         2026,
-        10,
-        23,
-        17,
-        9,
-        6
+        11,
+        5,
+        14,
+        11,
+        50
       ],
       "create_system": 0,
       "create_version": 20,

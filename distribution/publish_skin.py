@@ -26,7 +26,7 @@ def publish_skin(metadata):
     url='https://github.com/'+REPO+'/releases/download/skin-blur-v'+version+'/SkinBlurSetup.exe'
     release=ensure_release('skin-blur-v'+version,'SkinVeil '+version+' · Skin Blur',
         '## 설치\n[설치프로그램]('+url+')을 실행해 업데이트를 내려받으세요. Adobe 작업을 저장하고 앱을 종료한 뒤 설치·Windows 관리자 승인을 진행하세요. 오프라인 설치는 Setup.zip을 풀고 안의 세 파일을 함께 둔 채 실행하세요.\n\n'+skin['notes']+
-        '\n## 사용\n클립 선택 → SkinVeil 추가 → 효과 컨트롤에서 Skin Smoothing 조절. 기존 Skin Blur·Glam Local 프로젝트와 설치 위치를 유지합니다.\n\n## 검증 범위\n서로 크기가 다른 2·3·4명의 얼굴 검출과 각 얼굴의 블러·밝기 보정, 배포 DLL→worker 출력 일치, 배경·알파 보존을 로컬에서 검증했습니다. Premiere 실사용 확인은 별도입니다. Windows x64 · Premiere Pro 26 · SDR 8비트 · 최대 4명. 작은 얼굴·옆얼굴·가림에서 검출이 제한될 수 있으며 4K 전체 해상도 실시간 재생을 보장하지 않습니다.')
+        '\n## 사용\n클립 선택 → SkinVeil 추가 → 효과 컨트롤에서 Skin Smoothing 조절. 기존 Skin Blur·Glam Local 프로젝트와 설치 위치를 유지합니다.\n\n## 검증 범위\n서로 크기가 다른 2·3·4명의 얼굴 검출과 각 얼굴의 블러·밝기 보정, 기존 설정·0값 원본·배경·알파 보존을 실제 배포 DLL에서 로컬 검증했습니다. Premiere 실사용 확인은 별도입니다. Windows x64 · Premiere Pro 26 · SDR 8비트 · 최대 4명. 작은 얼굴·옆얼굴·가림에서 검출이 제한될 수 있으며 해상도·장면별 속도가 다르고 4K 전체 해상도 실시간 재생을 보장하지 않습니다.')
     upload(release,'SkinBlur-'+version+'-Windows.zip',target)
     upload(release,'SkinBlur-update.json',files['SkinBlur-update.json'])
     upload(release,'SkinBlur-'+version+'-Setup.zip',setup_bytes)
@@ -46,7 +46,7 @@ def publish_skin(metadata):
     except urllib.error.HTTPError as error:
         if error.code!=404:raise
         old=None
-    body={'message':'Verify published multi-person skin update','content':base64.b64encode((json.dumps(result,ensure_ascii=False,indent=2)+'\n').encode()).decode(),'branch':'main'}
+    body={'message':'Verify published SkinVeil '+version+' update','content':base64.b64encode((json.dumps(result,ensure_ascii=False,indent=2)+'\n').encode()).decode(),'branch':'main'}
     if old:body['sha']=old['sha']
     api('/contents/'+path,body,'PUT')
     print('SKIN_PUBLICATION_COMPLETE',flush=True)
